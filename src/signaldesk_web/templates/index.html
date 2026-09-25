@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8"><title>SignalDesk</title></head>
+  <body>
+    <main>
+      <h1>SignalDesk</h1>
+      <p>Signed in.</p>
+      <nav aria-label="SignalDesk journeys">
+        <a href="{{ url_for('diagnostics.index') }}">Diagnostics</a>
+        <a href="{{ url_for('exports.index') }}">Exports</a>
+      </nav>
+      <form method="post" action="{{ url_for('logout') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <button type="submit">Sign out</button>
+      </form>
+    </main>
+  </body>
+</html>

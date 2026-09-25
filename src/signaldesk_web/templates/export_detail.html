@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8"><title>Export — SignalDesk</title></head>
+  <body>
+    <main>
+      <h1>Export</h1>
+      {% if error %}<p role="alert">{{ error }}</p>{% endif %}
+      {% if export %}
+      <dl>
+        <dt>Format</dt><dd>{{ export.format }}</dd>
+        <dt>Status</dt><dd>{{ export.status }}</dd>
+        <dt>Correlation ID</dt><dd>{{ export.correlation_id }}</dd>
+      </dl>
+      {% if export.status == 'completed' %}
+      <a href="{{ url_for('exports.download', job_id=export.id) }}">View download metadata</a>
+      {% endif %}
+      {% endif %}
+      {% if metadata %}
+      <dl>
+        <dt>Object key</dt><dd>{{ metadata.object_key }}</dd>
+        <dt>SHA-256</dt><dd>{{ metadata.object_sha256 }}</dd>
+        <dt>Size</dt><dd>{{ metadata.size_bytes }}</dd>
+      </dl>
+      {% endif %}
+    </main>
+  </body>
+</html>

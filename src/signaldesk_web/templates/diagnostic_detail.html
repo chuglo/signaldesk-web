@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8"><title>Diagnostic — SignalDesk</title></head>
+  <body>
+    <main>
+      <h1>Diagnostic</h1>
+      {% if error %}<p role="alert">{{ error }}</p>{% endif %}
+      {% if diagnostic %}
+      <dl>
+        <dt>Target</dt><dd>{{ diagnostic.target }}</dd>
+        <dt>Status</dt><dd>{{ diagnostic.status }}</dd>
+        <dt>Correlation ID</dt><dd>{{ diagnostic.correlation_id }}</dd>
+      </dl>
+      {% if diagnostic.result_json is not none %}<pre>{{ diagnostic.result_json | tojson(indent=2) }}</pre>{% endif %}
+      {% endif %}
+    </main>
+  </body>
+</html>

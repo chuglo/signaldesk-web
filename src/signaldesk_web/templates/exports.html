@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8"><title>Exports — SignalDesk</title></head>
+  <body>
+    <main>
+      <h1>Request export</h1>
+      {% if error %}<p role="alert">{{ error }}</p>{% endif %}
+      <form method="post" action="{{ url_for('exports.index') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <label>Format
+          <select name="format" required>
+            <option value="csv">CSV</option>
+            <option value="json">JSON</option>
+          </select>
+        </label>
+        <button type="submit">Request export</button>
+      </form>
+    </main>
+  </body>
+</html>
